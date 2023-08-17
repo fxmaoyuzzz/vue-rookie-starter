@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- el 和 data 的两种写法：
+        1、 el 的两种写法：
+            ①：new Vue 的时候配置 el 属性；
+            ②：先创建 Vue 实例，随后再通过 vm.$mount('#root')指定 el 的值
+        2、data 有两种写法：
+            ①：对象式
+            ②：函数式
+            如何选择？
+                目前两种写法都可以，组件data 必须使用函数式，否则会报错
+        3、一个重要原则：
+            由 Vue 管理的函数，一定不要写箭头函数，一旦写了箭头函数，this 就不再是 Vue 实例了。
+     -->
+
+
+    <div id="root">
+        <h1>你好，{{name}}</h1>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        // const x = new Vue({
+        //     // el: '#root',     //el的第一种写法
+        //     data: {
+        //         name: 'jack'
+        //     }
+        // })
+        // console.log(x)
+
+        
+        // x.$mount('#root')   // el的第二种写法
+
+
+        new Vue({
+            el: '#root',
+
+            // data的第一种写法：对象式
+            // data: {
+            //     name: 'jack'
+            // }
+
+
+            // data的第一种写法：函数式
+            // data
+            data:function(){
+                // 此处的 this 是 Vue 实例对象
+                console.log('@@@',this)
+                return {
+                    name: "jack"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
