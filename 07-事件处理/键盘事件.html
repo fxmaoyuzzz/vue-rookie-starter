@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>键盘事件</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!--
+        ①：Vue 中常用的按键别名：
+            1、回车：enter
+            2、删除：delete
+            3、退出：esc
+            4、空格：space
+            5、换行：tab    （特殊，必须配合 keydown 使用）
+            6、上：up
+            7、下：down
+            8、左：left
+            9、右：right
+        
+        ②：Vue 未提供别名的按键，可以使用按键原始的 key 值去绑定，但注意要转为 kebab-case（短横线命名）
+        ③：系统修饰键（用法特殊）：ctrl、alt、shift、meta
+            a)、配合 keyup 使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才触发
+            b)、配合 keydown 使用：正常触发事件
+        ④：也可以使用 keyCode 去指定具体的按键（不推荐）
+        ⑤：Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+
+     -->
+
+
+    <div id="root">
+        <h2>键盘事件</h2>
+        <input type="text" placeholder="按下回车键提示输入" @keyup.meta="showInfo">
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                name: ''
+            },
+            methods: {
+                showInfo(event){
+                    // if(event.keyCode !== 13) return
+                    console.log(event.target.value)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
