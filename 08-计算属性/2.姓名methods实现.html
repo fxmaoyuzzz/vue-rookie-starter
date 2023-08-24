@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>计算属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        只要 data 中的数据发生改变；
+        Vue 会重新解析模板；
+        重新解析模板，只要遇到了差值语法中写方法，方法一定会重新调用
+
+     -->
+    <div id="root">
+        姓：<input type="text" v-model ="firstName"><br/>
+        名：<input type="text" v-model ="lastName"><br/>
+        <!-- 姓名：<span>{{firstName + '-' + lastName}}</span> -->
+        姓名：<span>{{fullName()}}</span>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName:'三'
+            },
+            methods: {
+                fullName(){
+                    return this.firstName + this.lastName
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
